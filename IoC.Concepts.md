@@ -16,14 +16,13 @@
 | What you see is what you get. Explicit             | You say what you ant, and the rest is filled in. Impict |
 | More verbose, but zero chance of mis-configuration | Less verbose, you could end up with misconfiguration    |
 | Uses scripting languages eg. JSON, YAML, XML       | Does more than Declarative                              |
-|----------------------------------------------------|---------------------------------------------------------|
+|                                                    |                                                         |
 | Examples:                                          | Examples:                                               |
 | ARM Templates                                      | Aws Cloud Dev Kit                                       |
 | Azure Blue Prints                                  | Pulumi                                                  |
 | CloudFormation                                     |                                                         |
 | Cloud Deployment Manager                           |                                                         |
 | Terraform                                          |                                                         |
-|----------------------------------------------------|---------------------------------------------------------|
 
 ## Declarative+
 -  Terraform is declarative but tf language features are imperative-like functionality
@@ -31,7 +30,6 @@
 | Declarative                | Imperative                     | Declarative+             |
 |----------------------------|--------------------------------|--------------------------|
 | YAML, JSON, XML            | Ruby, Python, JS               | HCL-ish (TF Language)    |
-|----------------------------+--------------------------------+--------------------------|
 | Limited or no support for  | Imperative features is         | Supports:                |
 | imperative-like features   | the utility of the entire      | - Loops (For Each)       |
 |                            | feature set of the programming | - Dynamic Blocks         |
@@ -39,7 +37,6 @@
 | behaviour by extending the |                                | - Complex Data Structure |
 | base language.             |                                | - Maps, Collections      |
 | E.g CloudFormation Macros  |                                |                          | 
-|----------------------------|--------------------------------|--------------------------|
 
 ## Infrastructure Lifecycle
 
