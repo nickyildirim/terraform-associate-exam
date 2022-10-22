@@ -105,3 +105,69 @@ is the act of coordinating multiple systems or services. This is a common term w
 
 ## Mutable vs Immutable Infra
 
+- Mutable Infras
+
+Develop > Deploy > Configure
+
+A VM is deployed and then a configuration management tool is used to configure the state of the server
+
+- Immutable Infra
+
+Develop > Configure > Deploy
+
+A VM is launced and provisioned, and then it is turned into a Virtual Images, stored in image repository, that image is used to deployed VM instances
+
+
+##  What is GitOps
+
+- is when you take infra as code and you use a git repo to introduce a formal process to review and accept changes to infra code, once that code is accepted, it automatically triggers a deploy
+
+## Immutable Infra Guarantee
+
+-  Terraform encourages you towards an immutable infra architect so you get the following guarantess
+	- Cloud Resource Failure: What if an EC2 instace fails a status check?
+	- App Failure: What if your post installation script fails due to change in package?
+	- Time to Deploy: What if I need to deploy in a hurray?
+
+	- Worst Case Scenario:
+		- Accidental Deletion
+		- Compromised by malicious actor
+		- Need to Change Regions (region outage)
+
+        - No Guarantee of 1 to 1
+	        - Every time Cloud-Init runs post deploy there is no guarantee its one-to-one with your other VMs.
+
+
+## HashiCorp
+
+- is a company specializing in managed open-source tools used to support the development and deployment of large-scale service-oriented software installations.
+
+	- What's HasiCorp Cloud Platform (HCP)>
+		- HCP is a unified platform to access Hashicorp vairous products.
+		- HCP services are cloud agnostic:
+			- support for the main cloud service providers (CSPs)
+				- Example: AWS, GCP and Azure
+			- highly suited for multi-cloud workloads
+
+## What's Terraform
+
+- is an open-source and cloud-agnostic infra as a code tool
+- TF uses declarative config files.
+- Config files are written in HCL language
+
+- Notable features of Terraform:
+	- Installable modules
+	- Plan and predict changes
+	- Dependency graphing
+	- State management
+	- Provision infra in familiar languages
+		- via AWS CDK
+	- TF registry with 1000+ providers
+
+## What is Terrafor Cloud
+
+- Terraform Cloud is a SaaS offering for:
+	- Remote state storage
+	- Version control integrations
+	- Flexible workflows
+	- Collaborate on Infrastructure changes in a single unified web portal.
