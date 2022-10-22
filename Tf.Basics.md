@@ -24,3 +24,10 @@ Note: TF uses change automation in the form of execution plans and resources gra
 
 ## Visualizing Executions Plans
 
+- You can visualize an execution plan as a graph using the terraform graph command. Terraform will output a GraphViz file (you'll need GraphViz installed to view the file)
+   `terraform graph | dot -Tsvg > graph.svg`
+
+## TF Resource Graph
+
+- TF builds a dependency graph from the TF configurations, and walks this graph to generate plans, refresh states, and more.
+	- When you use `terraform graph`, this is visual presentation of the dependency graph
