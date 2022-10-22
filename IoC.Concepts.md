@@ -28,15 +28,15 @@
 -  Terraform is declarative but tf language features are imperative-like functionality
 
 | Declarative                | Imperative                     | Declarative+             |
-|----------------------------|--------------------------------|--------------------------|
+| -------------------------- | ------------------------------ | ------------------------ |
 | YAML, JSON, XML            | Ruby, Python, JS               | HCL-ish (TF Language)    |
 | Limited or no support for  | Imperative features is         | Supports:                |
 | imperative-like features   | the utility of the entire      | - Loops (For Each)       |
 |                            | feature set of the programming | - Dynamic Blocks         |
 | In some cases you can add  | language.                      | - Locals                 |
 | behaviour by extending the |                                | - Complex Data Structure |
-| base language.             |                                | - Maps, Collections      |
-| E.g CloudFormation Macros  |                                |                          | 
+| base language.             |                                | - Maps, Collections      | 
+| E.g CloudFormation Macros  |                                |                          |
 
 ## Infrastructure Lifecycle
 
@@ -61,3 +61,47 @@ Idempotent: No matter how many times you run IaC, you will always end up with th
   
 - Sensibility
    - avoid financial and reputational losses
+
+## Non-Idempotent  vs Idempoten
+
+- Non-Idempotent
+When I deploy my IaC config file it will provision and launch 2 vm
+When I update my IaC and deploy again, I will end up 2 new VMs with a total of 4 VMs
+
+- Idepotent
+When I deploy my IaC config file it will provision and launch 2 VMs
+When I update my IaC and deploy again, it will update the VMs if changed by modifying or deleting and creating new VMs
+
+## Provisioning vs Deployment vs Orchestration
+
+- Provisioning 
+To prepare a server with systems, data and software, and make it ready for network operations. Example: Puppet, Ansible, Chef, Bash scripts, PowerShell or Cloud-Init.
+
+- Deployment
+is the act of delivering a version of your application to run provisioned server. Could be performed with AWS CodePipline, Harness, Jenkis, Github Actions, CircleCI
+
+- Orchestration
+is the act of coordinating multiple systems or services. This is a common term when working with microservices, Containers and Kubernetes.
+
+## Configuration Drift
+
+- Is when provisioned infra has an unexpected configuration change due to:
+	- team members manually adjusting configuration options
+	- malicios actors
+	- side affects from APIs, SDK or CLIs.
+
+- Example: A jr. dev turns on Delete on Termination for the production database.
+- Config drif going unnoticed could be loss or breach of cloud services and residing data or result in interruption of services or unexpected downtime.
+
+- How to detect config drif?
+	- A compliance tool that can detect misconfig. Example: AWS Config, Azure Policies, GCP Security Health Analytics
+	- Built-in supprt for drift detection. Example: AWS CloudFormation Drift Decection
+	- Storing the expected state. Example: Terraform state files
+
+- How to prevent configuration drift?
+	- Immutable infra, always create and destroy, never reuse, Blue, Green deployment strategy.
+		- Servers are never modified after they are deployed:
+			- Baking AMI images or containers via AWS Image Builder or HashiCorp Packer, or build server. Example: GCP Cloud Run
+
+## Mutable vs Immutable Infra
+
